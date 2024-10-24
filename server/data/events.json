@@ -16,5 +16,95 @@
       "taskDescription": "Austauch der Rauchwarnmelder"
     },
     "timestamp": "2024-09-01T10:00:00Z"
+  },
+  {
+    "id": "9f43fefd-efe0-4164-aa5b-147f5cddcf12",
+    "type": "UPDATED",
+    "appointment": {
+      "id": "appointment-1",
+      "day": "2024-09-19",
+      "startTime": "14:00",
+      "endTime": "15:00",
+      "technician": {
+        "id": "t2",
+        "name": "Jane Smith",
+        "age": 30,
+        "gender": "Female"
+      },
+      "taskDescription": "Austauch der Rauchwarnmelder"
+    },
+    "timestamp": "2024-10-24T20:20:52.200Z"
+  },
+  {
+    "id": "ef161ff6-818e-45ce-accc-6303e1462a49",
+    "type": "UPDATED",
+    "appointment": {
+      "id": "appointment-1",
+      "day": "2024-09-19",
+      "startTime": "14:00",
+      "endTime": "15:00",
+      "technician": {
+        "id": "t2",
+        "name": "Jane Smith",
+        "age": 30,
+        "gender": "Female"
+      },
+      "taskDescription": "Austauch der Rauchwarnmelder"
+    },
+    "timestamp": "2024-10-24T20:20:53.679Z"
+  },
+  {
+    "id": "974b7466-9496-4ac7-bbd8-62607ff6707a",
+    "type": "UPDATED",
+    "appointment": {
+      "id": "appointment-1",
+      "day": "2024-09-19",
+      "startTime": "14:00",
+      "endTime": "15:00",
+      "technician": {
+        "id": "t2",
+        "name": "Jane Smith",
+        "age": 30,
+        "gender": "Female"
+      },
+      "taskDescription": "Austauch der Rauchwarnmelder"
+    },
+    "timestamp": "2024-10-24T20:20:57.153Z"
+  },
+  {
+    "id": "95ac2c93-65dd-4307-ad0b-caba0bad7f75",
+    "type": "UPDATED",
+    "appointment": {
+      "id": "appointment-1",
+      "day": "2024-09-19",
+      "startTime": "14:00",
+      "endTime": "15:00",
+      "technician": {
+        "id": "t2",
+        "name": "Jane Smith",
+        "age": 30,
+        "gender": "Female"
+      },
+      "taskDescription": "Austauch der Rauchwarnmelder"
+    },
+    "timestamp": "2024-10-24T20:21:01.321Z"
+  },
+  {
+    "id": "3242dd59-ff1c-408b-9799-aeffd6982ea3",
+    "type": "UPDATED",
+    "appointment": {
+      "id": "appointment-1",
+      "day": "2024-09-20",
+      "startTime": "09:00",
+      "endTime": "10:00",
+      "technician": {
+        "id": "t3",
+        "name": "Alex Johnson",
+        "age": 28,
+        "gender": "Non-binary"
+      },
+      "taskDescription": "Austauch der Rauchwarnmelder"
+    },
+    "timestamp": "2024-10-24T20:21:02.932Z"
   }
 ]
