@@ -2,6 +2,7 @@
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
+  projectId: "q6czyx",
   e2e: {
     baseUrl: 'http://localhost:8080', // Your application base URL for local testing
     setupNodeEvents(on, config) {

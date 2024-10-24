@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "node start-server.js",
-    "client": "node start-client.js",
-    "setup": "npm i && cd client && npm i && cd ../server && npm i"
+    "setup": "npm install && npm run install-client && npm run install-server",
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+    "start": "npm run setup && concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server/start-server.js",
+    "client": "node client/start-client.js"
   },
   "devDependencies": {
     "concurrently": "4.1.1",
