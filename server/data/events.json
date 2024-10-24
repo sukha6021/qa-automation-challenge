@@ -106,5 +106,23 @@
       "taskDescription": "Austauch der Rauchwarnmelder"
     },
     "timestamp": "2024-10-24T20:21:02.932Z"
+  },
+  {
+    "id": "aeaeb6f1-0db6-434e-948d-9d31e4e155c0",
+    "type": "UPDATED",
+    "appointment": {
+      "id": "appointment-1",
+      "day": "2024-09-20",
+      "startTime": "09:00",
+      "endTime": "10:00",
+      "technician": {
+        "id": "t3",
+        "name": "Alex Johnson",
+        "age": 28,
+        "gender": "Non-binary"
+      },
+      "taskDescription": "Austauch der Rauchwarnmelder"
+    },
+    "timestamp": "2024-10-24T20:50:46.961Z"
   }
 ]
