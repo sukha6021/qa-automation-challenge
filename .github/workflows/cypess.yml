@@ -1,17 +1,19 @@
 name: Run Cypress Tests
 on: [push]
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Set up Node.js 20 # Ensure Node.js 20 is used
+      - name: Set up Node.js 20
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-      
+
       - name: Checkout
         uses: actions/checkout@v3
-      
+
       - name: Install Dependencies
         run: npm install
 
