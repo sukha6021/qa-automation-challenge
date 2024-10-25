@@ -1,52 +1,48 @@
-name: Cypress Tests with Dashboard
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+name: Run Cypress Tests
+on: [push]
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
-    env:
-      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
+      - name: Set up Node.js 20
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      - name: Start the application
-        run: npm start  # Run in foreground for debugging
+      - name: Install All Dependencies
+        run: npm run setup
 
-      - name: Wait for the application to be ready
+      - name: Start Application
         run: |
-          echo "Waiting for application to start..."
-          for i in {1..30}; do
-            if curl -s http://localhost:8080; then
-              echo "Application is up!"
+          npm run start &
+          sleep 5
+          echo "Attempting to start server at http://localhost:8080"
+
+      - name: Wait for Application to Start
+        run: |
+          n=0
+          until [ $n -ge 10 ]
+          do
+            response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080)
+            if [ $response -eq 200 ]; then
+              echo "Server is up and running!"
               break
             fi
-            echo "Waiting for application... Attempt $i"
-            sleep 5
+            n=$((n+1))
+            echo "Waiting for server... attempt $n"
+            sleep 10
           done
-          if ! curl -s http://localhost:8080; then
-            echo "Application failed to start. Exiting..."
+          if [ $n -ge 10 ]; then
+            echo "Server failed to start within expected time."
             exit 1
           fi
 
-      - name: Run Cypress tests
+      - name: Run Cypress Tests
         uses: cypress-io/github-action@v5
         with:
           record: true
