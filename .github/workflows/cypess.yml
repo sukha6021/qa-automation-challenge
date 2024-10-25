@@ -1,4 +1,4 @@
-name: CI with Cypress Dashboard Integration
+name: Cypress Tests with Dashboard
 
 on:
   push:
@@ -12,34 +12,45 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
+    env:
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
 
-      - name: Run setup
-        run: npm run setup                    # Installs dependencies for client and server
+      - name: Start the application
+        run: npm start  # Run in foreground for debugging
 
-      - name: Start Application
-        run: npm run start &                  # Runs server and client in the background
-        env:
-          NODE_ENV: test
+      - name: Wait for the application to be ready
+        run: |
+          echo "Waiting for application to start..."
+          for i in {1..30}; do
+            if curl -s http://localhost:8080; then
+              echo "Application is up!"
+              break
+            fi
+            echo "Waiting for application... Attempt $i"
+            sleep 5
+          done
+          if ! curl -s http://localhost:8080; then
+            echo "Application failed to start. Exiting..."
+            exit 1
+          fi
 
-      - name: Wait for App to Start
-        run: sleep 15                         # Wait for server to be fully up and running
-
-      - name: Cypress run
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v5
         with:
-          record: true                        # Enables recording in Cypress Dashboard
-          browser: chrome                     # Specifies the browser (chrome or firefox)
+          record: true
+          browser: chrome
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
